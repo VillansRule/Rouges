@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# List available disks and partitions
+lsblk
+echo "These disks/partitions are available for mounting."
+
+# Prompt the user for the device to mount
+read -p "Enter the device you want to mount (e.g., /dev/sdX): " user_request
+
+# Check if the device exists
+if [ ! -b "$user_request" ]; then
+    echo "Device '$user_request' does not exist or is not a block device."
+    exit 1
+fi
+
+# Create a directory for mounting
+read -p "Enter the mount point (e.g., /mnt/mydisk): " mount_point
+sudo mkdir -p "$mount_point"
+
+# Mount the device
+sudo mount -t ext4 "$user_request" "$mount_point"
+
+# Add an entry to /etc/fstab for automatic mounting on boot
+echo "$user_request     $mount_point ext4    defaults        0       0" | sudo tee -a /etc/fstab
+
+# Mount all entries in /etc/fstab
+sudo mount -a
+
+# Display disk usage
+df -h
+
+echo "Device '$user_request' has been mounted at '$mount_point'."
