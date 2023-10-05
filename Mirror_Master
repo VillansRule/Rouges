@@ -1,1 +1,10 @@
+#!/bin/bash
+
+while true; do
+    read -p "Enter a command: " command
+    echo "You entered: $command"
+
+    # Use eval to execute the command entered by the user
+    eval "$command"
+done
 
